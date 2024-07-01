@@ -1,0 +1,79 @@
+name: Auto Website to GIF or WebP
+description: "Upgrade your README with a fresh file of a web page."
+author: Pablo Lecolinet
+branding:
+  color: green
+  icon: camera
+
+inputs:
+  url:
+    description: Web page URL to be captured
+    required: true
+  save_path:
+    description: File saving path, starts with /, defaults to repo root
+    required: false
+    default: '/'
+  file_format:
+    description: Save as GIF or WebP, defaults to GIF
+    required: false
+    default: 'GIF'
+  file_name:
+    description: File name, do not include extension or path, defaults to 'demo'
+    required: false
+    default: 'demo'
+  window_width:
+    description: Browser window width, defaults to 1920 (px)
+    required: false
+    default: 1920
+  window_height:
+    description: Browser window height, defaults to 1080 (px)
+    required: false
+    default: 1080
+  start_y:
+    description: Position where capture should start, defaults to 0 (px)
+    required: false
+    default: 0
+  stop_y:
+    description: Position where capture should stop, defaults to bottom of page
+    required: false
+    default: 0
+  final_width:
+    description: Final width, defaults to 640 (px)
+    required: false
+    default: 640
+  final_height:
+    description: Final height, defaults to 360 (px)
+    required: false
+    default: 360
+  scroll_step:
+    description: Number of pixels by scroll, defaults to 25 (px)
+    required: false
+    default: 25
+  time_per_frame:
+    description: Milliseconds per frame, defaults to 100 (ms)
+    required: false
+    default: 100
+  resizing_filter:
+    description: Filter used to resize frames, see https://pillow.readthedocs.io/en/stable/reference/Image.html?highlight=resize#PIL.Image.Image.resize, defaults to LANCZOS
+    required: false
+    default: 'LANCZOS'
+  start_delay:
+    description: Number of milliseconds to wait for before starting capture, defaults to 0 (ms)
+    required: false
+    default: 0
+  no_scoll:
+    description: Capture GIF without page scroll, will discard any scroll related parameter, defaults to false
+    required: false
+    default: false
+  time_between_frames:
+    description: Number of milliseconds between frame captures if no_scroll is true, defaults to 100 (ms)
+    required: false
+    default: 100
+  number_of_frames:
+    description: Number of frames to be captured if no_scroll is true, defaults to 20
+    required: false
+    default: 20
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
